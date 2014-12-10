@@ -13,3 +13,7 @@ flickr-oauth-dance
 ```
 
 Follow the instructions! If you're creating a new Flickr app, you should probably [read the TOS](https://www.flickr.com/services/api/tos/).
+
+## License
+
+MIT
