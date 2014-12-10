@@ -4,7 +4,9 @@ Dances with Flickr to quickly get OAuth credentials for new or existing apps
 
 ## Installation
 
+```
 npm install -g flickr-oauth-dance
+```
 
 ## Usage
 
