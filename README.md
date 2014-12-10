@@ -1,6 +1,6 @@
 # flickr-oauth-dance
 
-Dances with Flickr to quickly get OAuth credentials for new or existing apps
+Dances with Flickr to quickly get OAuth credentials for new or existing apps. Use Google Chrome's logged-in Flickr session to negotiate token exchange.
 
 ## Installation
 
