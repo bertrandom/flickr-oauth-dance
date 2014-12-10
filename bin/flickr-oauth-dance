@@ -1,0 +1,74 @@
+#!/usr/bin/env node
+
+var chrome = require('chrome-cookies-secure'),
+	dance = require('../index.js'),
+	path = require('path'),
+	fs = require('fs'),
+	mkdirp = require('mkdirp');
+
+chrome.getCookies('https://www.flickr.com', 'jar', function (err, jar) {
+
+	dance.testLogin(jar, function(err, loggedIn) {
+
+		if (err) {
+
+			console.log('There was a problem checking if you\'re logged in. Check your internet connectivity.');
+			return;
+
+		}
+
+		if (!loggedIn) {
+
+			console.log('Please sign in to Flickr in Google Chrome and try again.');
+			return;
+
+		}
+
+		dance.chooseCreateOrExisting(function (err, action) {
+
+			var process = function(err, app) {
+				dance.getAccessToken(app, jar, function (err, config) {
+
+					dance.chooseOutput(function (err, action) {
+
+						var jsonOutput = JSON.stringify(config, null, '\t');
+
+						if (action === 'stdout') {
+							console.log(jsonOutput);
+						} else {
+
+							dance.getFilename(function(err, filename) {
+
+								var dirName = path.dirname(filename);
+								mkdirp(dirName, function (err) {
+
+									if (err) {
+										console.log('Could not create directory for ' + filename);
+										return;
+									}
+
+									fs.writeFileSync(filename, jsonOutput);
+									console.log('Wrote JSON config to file ' + filename);
+
+								});
+
+							});
+
+						}
+
+					});
+
+				});
+			};
+
+			if (action === 'create') {
+				dance.createApp(jar, process);
+			} else {
+				dance.chooseExistingApp(jar, process);
+			}
+
+		});
+
+	});
+
+});
