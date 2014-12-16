@@ -1,21 +1,28 @@
 {
   "name": "flickr-oauth-dance",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Dances with Flickr to quickly get OAuth credentials",
   "bin": "bin/flickr-oauth-dance",
-  "keywords": ["cli", "flickr", "oauth"],
+  "keywords": [
+    "cli",
+    "flickr",
+    "oauth"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "os": ["darwin"],
+  "os": [
+    "darwin"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/bertrandom/flickr-oauth-dance.git"
-  },  
+  },
   "author": "Bertrand Fan",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^0.5.1",
     "char-spinner": "^1.0.1",
     "cheerio": "^0.18.0",
     "chrome-cookies-secure": "^1.0.1",

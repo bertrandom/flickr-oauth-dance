@@ -4,11 +4,12 @@ var chrome = require('chrome-cookies-secure'),
 	dance = require('../index.js'),
 	path = require('path'),
 	fs = require('fs'),
-	mkdirp = require('mkdirp');
+	mkdirp = require('mkdirp'),
+	chalk = require('chalk');
 
 chrome.getCookies('https://www.flickr.com', 'jar', function (err, jar) {
 
-	dance.testLogin(jar, function(err, loggedIn) {
+	dance.testLogin(jar, function(err, loggedIn, nsidOrPathAlias) {
 
 		if (err) {
 
@@ -23,6 +24,8 @@ chrome.getCookies('https://www.flickr.com', 'jar', function (err, jar) {
 			return;
 
 		}
+
+		console.log('Flickr credentials found. Signed in as ' + chalk.bold(nsidOrPathAlias));
 
 		dance.chooseCreateOrExisting(function (err, action) {
 

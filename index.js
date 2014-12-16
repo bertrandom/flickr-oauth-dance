@@ -291,14 +291,22 @@ function chooseCreateOrExisting(callback) {
 
 function testLogin(jar, callback) {
 
-	request({ url: 'https://www.flickr.com/services/apps/by/me', jar: jar, followRedirect: false }, function (err, response, body) {
+	request({ url: 'https://www.flickr.com/me', jar: jar, followRedirect: false }, function (err, response, body) {
 
 		if (err) {
 			return callback(err);
 		}
 
 		var parsedUrl = url.parse(response.headers.location);
-		callback(null, (parsedUrl.pathname !== '/signin/'));
+
+		if (parsedUrl.pathname === '/signin/') {
+			return callback(null, (parsedUrl.pathname !== '/signin/'));
+		}
+
+		var matches = parsedUrl.pathname.match(/\/photos\/(.*)\//);
+		var nsidOrPathAlias = matches[1];
+
+		callback(null, true, nsidOrPathAlias);
 
 	});
 
