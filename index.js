@@ -117,12 +117,12 @@ function createApp(jar, callback) {
 
 function getAccessToken(app, jar, callback) {
 
-	var oa = new OAuth("http://www.flickr.com/services/oauth/request_token",
-	  "http://www.flickr.com/services/oauth/access_token",
+	var oa = new OAuth("https://www.flickr.com/services/oauth/request_token",
+	  "https://www.flickr.com/services/oauth/access_token",
 	  app.key,
 	  app.secret,
 	  "1.0A",
-	  "http://localhost/callback",
+	  "https://localhost/callback",
 	  "HMAC-SHA1");
 
 	inquirer.prompt([{
