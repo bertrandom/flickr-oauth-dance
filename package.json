@@ -1,6 +1,6 @@
 {
   "name": "flickr-oauth-dance",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Dances with Flickr to quickly get OAuth credentials",
   "bin": "bin/flickr-oauth-dance",
   "keywords": [
