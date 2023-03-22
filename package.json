@@ -25,7 +25,7 @@
     "chalk": "^0.5.1",
     "char-spinner": "^1.0.1",
     "cheerio": "^0.22.0",
-    "chrome-cookies-secure": "^1.0.1",
+    "chrome-cookies-secure": "^2.0.0",
     "inquirer": "^0.8.0",
     "mkdirp": "^0.5.0",
     "oauth": "^0.9.12",

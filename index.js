@@ -303,7 +303,7 @@ function testLogin(jar, callback) {
 			return callback(null, (parsedUrl.pathname !== '/signin/'));
 		}
 
-		var matches = parsedUrl.pathname.match(/\/photos\/(.*)\//);
+		var matches = parsedUrl.pathname.match(/\/photos\/(.*)/);
 		var nsidOrPathAlias = matches[1];
 
 		callback(null, true, nsidOrPathAlias);
